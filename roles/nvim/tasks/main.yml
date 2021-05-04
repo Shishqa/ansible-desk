@@ -23,4 +23,4 @@
     state: present
 
 - name: Install nvim plugins
-  shell: 'nvim +PlugInstall +qall > /dev/null'
+  shell: 'nvim --headless +PlugInstall +qall'
