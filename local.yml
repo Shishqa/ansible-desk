@@ -11,6 +11,24 @@
         cache_valid_time: 3600
       when: ansible_os_family == 'Debian'
 
+    - name: Check that running not as root
+      fail:
+        msg: 'do not run this as root'
+      when: ansible_user_id == 'root'
+
+    - name: Register user_id
+      set_fact:
+        user_id: "{{ ansible_user_id }}"
+      when: ansible_user_id != "root"
+
+    - name: Get user home
+      shell: "getent passwd {{ user_id }}  | awk -F: '{ print $6 }'"
+      register: getent
+
+    - name: Register user home
+      set_fact:
+        user_home: "{{ getent.stdout }}"
+
   tasks:
     - name: Ensure base packages are present
       package: 
