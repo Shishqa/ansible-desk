@@ -1,0 +1,9 @@
+---
+- name: Install zsh
+  become: yes
+  package:
+    name: zsh
+    state: present
+
+- name: Link configs
+

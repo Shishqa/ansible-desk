@@ -1,0 +1,24 @@
+---
+
+- hosts: localhost
+  connection: local
+
+  pre_tasks:
+    - name: Update apt cache
+      become: yes
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == 'Debian'
+
+  tasks:
+    - name: Ensure base packages are present
+      package: 
+        name: 
+          - git
+          - npm
+
+    - name: Clone dotfiles repository
+      git: 
+        repo: https://github.com/Shishqa/dotfiles.git
+        dest: "{{ user_home }}"

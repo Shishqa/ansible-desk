@@ -1,0 +1,6 @@
+---
+
+base_pkg:
+  - git
+  - python3-pip
+  - npm
