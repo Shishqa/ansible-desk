@@ -9,8 +9,10 @@
   file:
     src: "{{ dotdir }}/zsh"
     dest: "{{ user_home }}/.config/zsh"
+    state: link
 
 - name: Link .zshenv to home dir
   file:
     src: "{{ dotdir }}/zshenv"
     dest: "{{ user_home }}/.zshenv"
+    state: link
