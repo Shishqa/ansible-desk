@@ -3,7 +3,7 @@
   become: yes
   package:
     name: "{{ zsh_packages }}"
-    state: present
+    state: latest
 
 - name: Link configs
   file:

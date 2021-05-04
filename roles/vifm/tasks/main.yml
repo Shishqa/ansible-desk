@@ -1,0 +1,14 @@
+---
+
+- name: Install vifm
+  become: yes
+  package: 
+    name: vifm
+    state: latest
+
+- name: Link configs
+  file:
+    src: "{{ dotdir }}/vifm"
+    dest: "{{ user_home }}/.config/vifm"
+    state: link
+

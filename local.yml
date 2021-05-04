@@ -52,3 +52,6 @@
 
     - import_role:
         name: zsh
+
+    - import_role: 
+        name: vifm
