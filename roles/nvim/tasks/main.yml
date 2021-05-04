@@ -1,0 +1,14 @@
+---
+
+- name: Install nvim
+  become: yes
+  package: 
+    name: neovim
+    state: latest
+
+- name: Link configs
+  file:
+    src: "{{ dotdir }}/nvim"
+    dest: "{{ user_home }}/.config/nvim"
+    state: link
+

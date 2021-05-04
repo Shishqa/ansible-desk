@@ -51,8 +51,8 @@
         path: "{{ user_home }}/.config"
         state: directory
 
-    - import_role:
-        name: zsh
-
     - import_role: 
         name: vifm
+
+    - import_role: 
+        name: nvim
