@@ -2,8 +2,15 @@
 - name: Install zsh
   become: yes
   package:
-    name: zsh
+    name: "{{ zsh_packages }}"
     state: present
 
 - name: Link configs
+  file:
+    src: "{{ dotdir }}/zsh"
+    dest: "{{ user_home }}/.config/zsh"
 
+- name: Link .zshenv to home dir
+  file:
+    src: "{{ dotdir }}/zshenv"
+    dest: "{{ user_home }}/.zshenv"

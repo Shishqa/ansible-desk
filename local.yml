@@ -45,3 +45,10 @@
         repo: https://github.com/Shishqa/dotfiles.git
         dest: "{{ dotdir }}"
 
+    - name: Create config directory
+      file:
+        path: "{{ user_home }}/.config"
+        state: directory
+
+    - import_role:
+        name: zsh
