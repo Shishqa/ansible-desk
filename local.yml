@@ -36,7 +36,12 @@
           - git
           - npm
 
+    - name: Register dotdir
+      set_fact:
+        dotdir: "{{ user_home }}/dotfiles"
+
     - name: Clone dotfiles repository
       git: 
         repo: https://github.com/Shishqa/dotfiles.git
-        dest: "{{ user_home }}/dotfiles"
+        dest: "{{ dotdir }}"
+
