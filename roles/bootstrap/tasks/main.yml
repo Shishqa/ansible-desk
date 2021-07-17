@@ -12,7 +12,6 @@
   package: 
     name: 
       - git
-      - openssh
 
 - name: Register dotdir
   set_fact:
