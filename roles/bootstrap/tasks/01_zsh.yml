@@ -27,14 +27,17 @@
   meta: reset_connection
     
 - name: Download oh-my-zsh installer
+  become: yes
   get_url: 
     url: https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
     dest: /tmp/zsh-installer.sh
 
 - name: Execute the zsh-installer.sh
+  become: yes
   shell: /tmp/zsh-installer.sh
 
 - name: Remove the zsh-installer.sh
+  become: yes
   file: 
     path: /tmp/zsh-installer.sh 
     state: absent
