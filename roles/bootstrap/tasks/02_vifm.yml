@@ -14,5 +14,5 @@
 
 - name: Set vifm environment variables
   lineinfile:
-    path: "{{ user_home }}/.config/zsh/zshenv"
+    path: "{{ user_home }}/.config/zsh/.zshenv"
     line: "export VIFM={{ user_home }}/.config/vifm"
