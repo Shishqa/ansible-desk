@@ -29,8 +29,8 @@
     state: directory
 
 - name: Import zsh tasks
-  import_tasks: zsh.yml
+  import_tasks: 01_zsh.yml
 
 - name: Import vifm tasks
-  import_tasks: vifm.yml
+  import_tasks: 02_vifm.yml
 
