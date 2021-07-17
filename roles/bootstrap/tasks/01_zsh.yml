@@ -39,3 +39,19 @@
   file: 
     path: /tmp/zsh-installer.sh 
     state: absent
+
+- name: Create plugins directory
+  file:
+    path: "{{ user_home }}/.config/zsh/custom/plugins"
+    state: directory
+
+- name: Add autosuggestions
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "{{ user_home }}/.config/zsh/custom/plugins/zsh-autosuggestions"
+
+- name: Add syntax highlighting plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "{{ user_home }}/.config/zsh/custom/plugins/zsh-syntax-highlighting"
+
