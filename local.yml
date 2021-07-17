@@ -29,30 +29,5 @@
       set_fact:
         user_home: "{{ getent.stdout }}"
 
-  tasks:
-    - name: Ensure base packages are present
-      become: yes
-      package: 
-        name: 
-          - git
-          - npm
-
-    - name: Register dotdir
-      set_fact:
-        dotdir: "{{ user_home }}/dotfiles"
-
-    - name: Clone dotfiles repository
-      git: 
-        repo: https://github.com/Shishqa/dotfiles.git
-        dest: "{{ dotdir }}"
-
-    - name: Create config directory
-      file:
-        path: "{{ user_home }}/.config"
-        state: directory
-
-    - import_role: 
-        name: vifm
-
-    - import_role: 
-        name: nvim
+  roles:
+    - { role: bootstrap }

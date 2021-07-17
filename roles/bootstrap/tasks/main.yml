@@ -1,0 +1,37 @@
+---
+
+- name: Update apt cache
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure basic packages are present
+  become: yes
+  package: 
+    name: 
+      - git
+      - openssh
+
+- name: Register dotdir
+  set_fact:
+    dotdir: "{{ user_home }}/dotfiles"
+
+- name: "Clone dotfiles repository to {{ dotdir }} directory"
+  git: 
+    recursive: yes
+    repo: https://github.com/Shishqa/dotfiles.git
+    dest: "{{ dotdir }}"
+
+- name: Create config directory
+  file:
+    path: "{{ user_home }}/.config"
+    state: directory
+
+- name: Import zsh tasks
+  import_tasks: zsh.yml
+
+- name: Import vifm tasks
+  import_tasks: vifm.yml
+

@@ -1,6 +1,6 @@
 ---
 
-- name: Install nvim
+- name: Install neovim
   become: yes
   package: 
     name: neovim

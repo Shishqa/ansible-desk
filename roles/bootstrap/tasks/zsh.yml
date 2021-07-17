@@ -2,7 +2,7 @@
 - name: Install zsh
   become: yes
   package:
-    name: "{{ zsh_packages }}"
+    name: zsh
     state: latest
 
 - name: Link configs
@@ -16,3 +16,9 @@
     src: "{{ dotdir }}/zshenv"
     dest: "{{ user_home }}/.zshenv"
     state: link
+
+- name: Change users shell to zsh
+  become: yes
+  user: 
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
